@@ -1740,7 +1740,7 @@ void WebRtcVideoChannel::SetInterface(
   // result in the default value being used.
   const std::string group_name =
       webrtc::field_trial::FindFullName("WebRTC-IncreasedReceivebuffers");
-  int recv_buffer_size = kVideoRtpRecvBufferSize;
+  int recv_buffer_size = kVideoRtpBufferSizeIncreased;
   if (!group_name.empty() &&
       (sscanf(group_name.c_str(), "%d", &recv_buffer_size) != 1 ||
        recv_buffer_size <= 0)) {
@@ -1756,7 +1756,7 @@ void WebRtcVideoChannel::SetInterface(
   // due to lack of socket buffer space, although it's not yet clear what the
   // ideal value should be.
   MediaChannel::SetOption(NetworkInterface::ST_RTP, rtc::Socket::OPT_SNDBUF,
-                          kVideoRtpSendBufferSize);
+                          kVideoRtpBufferSizeIncreased);
 }
 
 void WebRtcVideoChannel::SetFrameDecryptor(

@@ -94,7 +94,7 @@ PacingController::PacingController(Clock* clock,
           !field_trials ? std::make_unique<FieldTrialBasedConfig>() : nullptr),
       field_trials_(field_trials ? field_trials : fallback_field_trials_.get()),
       drain_large_queues_(
-          !IsDisabled(*field_trials_, "WebRTC-Pacer-DrainQueue")),
+          true),
       send_padding_if_silent_(
           IsEnabled(*field_trials_, "WebRTC-Pacer-PadInSilence")),
       pace_audio_(IsEnabled(*field_trials_, "WebRTC-Pacer-BlockAudio")),

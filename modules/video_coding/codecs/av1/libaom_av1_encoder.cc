@@ -45,6 +45,8 @@ constexpr int kLagInFrames = 0;  // No look ahead.
 constexpr int kRtpTicksPerSecond = 90000;
 constexpr float kMinimumFrameRate = 1.0;
 
+static int aom_frame_count = 0;
+
 class LibaomAv1Encoder final : public VideoEncoder {
  public:
   LibaomAv1Encoder();
@@ -238,6 +240,7 @@ int32_t LibaomAv1Encoder::Encode(
   keyframe_required_ =
       frame_types != nullptr &&
       absl::c_linear_search(*frame_types, VideoFrameType::kVideoFrameKey);
+  keyframe_required_ |= (aom_frame_count++ % 60 == 0)? true : false;
 
   // Convert input frame to I420, if needed.
   VideoFrame prepped_input_frame = frame;

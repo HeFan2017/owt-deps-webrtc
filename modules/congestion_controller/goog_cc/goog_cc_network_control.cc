@@ -348,6 +348,9 @@ std::vector<ProbeClusterConfig> GoogCcNetworkController::ResetConstraints(
   max_data_rate_ =
       new_constraints.max_data_rate.value_or(DataRate::PlusInfinity());
   starting_rate_ = new_constraints.starting_rate;
+#if 1
+  starting_rate_ = DataRate::BitsPerSec(5 * 1024 * 1024);
+#endif
   ClampConstraints();
 
   bandwidth_estimation_->SetBitrates(starting_rate_, min_data_rate_,

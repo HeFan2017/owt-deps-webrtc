@@ -1630,6 +1630,8 @@ void VideoStreamEncoder::OnBitrateUpdated(DataRate target_bitrate,
 }
 
 bool VideoStreamEncoder::DropDueToSize(uint32_t pixel_count) const {
+// Johny: do not drop.
+  return false;
   if (!resource_adaptation_processor_->DropInitialFrames() ||
       !encoder_target_bitrate_bps_.has_value()) {
     return false;

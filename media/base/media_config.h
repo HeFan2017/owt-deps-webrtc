@@ -42,7 +42,7 @@ struct MediaConfig {
     // Note that even if this flag is set to false, dropping of frames can
     // still happen pre-decode, e.g., dropping of higher temporal layers.
     // This flag comes from the PeerConnection RtcConfiguration.
-    bool enable_prerenderer_smoothing = true;
+    bool enable_prerenderer_smoothing = false;
 
     // Enables periodic bandwidth probing in application-limited region.
     bool periodic_alr_bandwidth_probing = false;

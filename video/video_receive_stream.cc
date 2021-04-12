@@ -332,7 +332,7 @@ void VideoReceiveStream::Start() {
 
   transport_adapter_.Enable();
   rtc::VideoSinkInterface<VideoFrame>* renderer = nullptr;
-  if (config_.enable_prerenderer_smoothing) {
+  if (false/*config_.enable_prerenderer_smoothing*/) {
     incoming_video_stream_.reset(new IncomingVideoStream(
         task_queue_factory_, config_.render_delay_ms, this));
     renderer = incoming_video_stream_.get();

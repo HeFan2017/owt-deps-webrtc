@@ -42,7 +42,8 @@ struct BitrateConstraints {
   int max_bitrate_bps = -1;
 
  private:
-  static constexpr int kDefaultStartBitrateBps = 300000;
+  //static constexpr int kDefaultStartBitrateBps = 300000;
+  static constexpr int kDefaultStartBitrateBps = 5000000;
 };
 
 }  // namespace webrtc

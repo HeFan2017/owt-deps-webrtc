@@ -442,6 +442,7 @@ class RTC_EXPORT RTCInboundRTPStreamStats final : public RTCRTPStreamStats {
   // TODO(hbos): Collect and populate this value. https://bugs.webrtc.org/7065
   RTCStatsMember<double> gap_discard_rate;
   RTCStatsMember<uint32_t> frames_decoded;
+  RTCStatsMember<uint32_t> frames_rendered;
   RTCStatsMember<uint32_t> key_frames_decoded;
   RTCStatsMember<double> total_decode_time;
   RTCStatsMember<double> total_inter_frame_delay;

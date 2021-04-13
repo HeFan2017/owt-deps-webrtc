@@ -108,6 +108,8 @@ class DtlsTransport : public DtlsTransportInternal {
   const webrtc::CryptoOptions& crypto_options() const override;
   DtlsTransportState dtls_state() const override;
   const std::string& transport_name() const override;
+  cricket::MediaType media_type() const override;
+
   int component() const override;
 
   // DTLS is active if a local certificate was set. Otherwise this acts in a
@@ -223,6 +225,7 @@ class DtlsTransport : public DtlsTransportInternal {
   rtc::ThreadChecker thread_checker_;
 
   std::string transport_name_;
+  cricket::MediaType media_type_;
   int component_;
   DtlsTransportState dtls_state_ = DTLS_TRANSPORT_NEW;
   // Underlying ice_transport, not owned by this class.

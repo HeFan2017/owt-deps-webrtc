@@ -374,6 +374,7 @@ class JsepTransportController : public sigslot::has_slots<> {
       DatagramTransportInterface* datagram_transport);
   rtc::scoped_refptr<webrtc::IceTransportInterface> CreateIceTransport(
       const std::string& transport_name,
+      cricket::MediaType media_type,
       bool rtcp);
 
   std::unique_ptr<webrtc::RtpTransport> CreateUnencryptedRtpTransport(

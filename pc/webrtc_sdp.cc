@@ -170,6 +170,7 @@ static const char kAttributePacketization[] = "packetization";
 // Experimental flags
 static const char kAttributeXGoogleFlag[] = "x-google-flag";
 static const char kValueConference[] = "conference";
+static const char kAttributeQuality[] = "quality";
 
 static const char kAttributeRtcpRemoteEstimate[] = "remote-net-estimate";
 
@@ -3131,6 +3132,15 @@ bool ParseContent(const std::string& message,
               line, &transport->opaque_parameters->protocol,
               &transport->opaque_parameters->parameters, error)) {
         return false;
+      }
+    } else if (HasAttribute(line, kAttributeQuality)) {
+      // RFC 4655: a=quality:xx
+      std::string quality("");
+      if (!GetValue(line, kAttributeQuality, &quality, error)) {
+        return false;
+      }
+      if (quality == "10") {
+        media_desc->set_quality(10);
       }
     } else if (HasAttribute(line, kAltProtocolLine)) {
       std::string alt_protocol;

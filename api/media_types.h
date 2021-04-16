@@ -20,7 +20,7 @@
 
 namespace cricket {
 
-enum MediaType { MEDIA_TYPE_AUDIO, MEDIA_TYPE_VIDEO, MEDIA_TYPE_DATA };
+enum MediaType { MEDIA_TYPE_AUDIO, MEDIA_TYPE_VIDEO, MEDIA_TYPE_DATA, MEDIA_TYPE_SCREEN };
 
 extern const char kMediaTypeAudio[];
 extern const char kMediaTypeVideo[];

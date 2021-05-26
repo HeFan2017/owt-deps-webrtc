@@ -36,6 +36,7 @@
 #include "rtc_base/checks.h"
 #include "rtc_base/logging.h"
 #include "rtc_base/numerics/mod_ops.h"
+#include "rtc_base/time/ptp_clock_sync.h"
 #include "system_wrappers/include/clock.h"
 #include "system_wrappers/include/field_trial.h"
 
@@ -102,9 +103,7 @@ PacketBuffer::InsertResult PacketBuffer::InsertPacket(
     first_seq_num_ = seq_num;
   }
 
-#if defined(WEBRTC_WIN)
   QueryPerformanceCounter((LARGE_INTEGER*)&packet->time_ticks);
-#endif
 
   if (buffer_[index] != nullptr) {
     // Duplicate packet, just delete the payload.
